@@ -48,7 +48,7 @@ export const App = () => {
       : notes;
 
   return (
-    <div className="max-w-6xl my-12 mx-auto space-y-6">
+    <div className="max-w-6xl my-12 mx-auto space-y-6 px-5">
       <h1 className="text-3xl font-bold">Lista de notas</h1>
       <form className="w-full">
         <input
@@ -61,7 +61,7 @@ export const App = () => {
 
       <div className="h-px bg-slate-700" />
 
-      <div className="grid grid-cols-3 gap-6 auto-rows-[250px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[250px]">
         <NewNoteCard onNoteCreated={onNoteCreated} />
 
         {filteredNotes.map((note) => (
