@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, KeyboardEvent, useState } from "react";
 import { toast } from "sonner";
 
 interface NewNoteCardProps {
@@ -37,6 +37,19 @@ export const NewNoteCard = ({ onNoteCreated }: NewNoteCardProps) => {
     setShoudShowOnBoarding(true);
 
     toast.success("Nota criada com sucesso!");
+  };
+
+  const handleKeyboardShortcutEvent = (event: KeyboardEvent) => {
+    if (content === "") return;
+
+    if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) {
+      onNoteCreated(content);
+
+      setContent("");
+      setShoudShowOnBoarding(true);
+
+      toast.success("Nota criada com sucesso!");
+    }
   };
 
   const handleStartRecording = () => {
@@ -136,6 +149,7 @@ export const NewNoteCard = ({ onNoteCreated }: NewNoteCardProps) => {
                   autoFocus
                   className="text-sm leading-6 text-slate-400 bg-transparent resize-none flex-1 outline-none"
                   onChange={handleContentChanged}
+                  onKeyDown={handleKeyboardShortcutEvent}
                   value={content}
                 />
               )}
