@@ -1,45 +1,52 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import axios from "axios";
+
 import { NewNoteCard } from "./components/new-note-card";
 import { NoteCard } from "./components/note-card";
 
 interface Note {
   id: string;
-  date: Date;
+  createdAt: Date;
   content: string;
 }
 
 export const App = () => {
   const [search, setSearch] = useState("");
-  const [notes, setNotes] = useState<Note[]>(() => {
-    const notesOnStorage = localStorage.getItem("notes");
+  const [notes, setNotes] = useState<Note[]>([]);
 
-    if (notesOnStorage) {
-      return JSON.parse(notesOnStorage);
+  const fetchNotes = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:3333/notes");
+      setNotes(data);
+    } catch (error) {
+      console.log(error);
     }
-
-    return [];
-  });
-
-  const onNoteCreated = (content: string) => {
-    const newNote = {
-      id: crypto.randomUUID(),
-      date: new Date(),
-      content,
-    };
-
-    const notesArray = [newNote, ...notes];
-
-    setNotes(notesArray);
-
-    localStorage.setItem("notes", JSON.stringify(notesArray));
   };
 
-  const onNoteDeleted = (id: string) => {
-    const notesArray = notes.filter((note) => note.id !== id);
+  useEffect(() => {
+    fetchNotes();
+  }, []);
 
-    setNotes(notesArray);
+  const onNoteCreated = async (content: string) => {
+    try {
+      await axios.post("http://localhost:3333/notes", {
+        content,
+      });
 
-    localStorage.setItem("notes", JSON.stringify(notesArray));
+      await fetchNotes();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onNoteDeleted = async (id: string) => {
+    try {
+      await axios.delete(`http://localhost:3333/notes/${id}`);
+
+      await fetchNotes();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
