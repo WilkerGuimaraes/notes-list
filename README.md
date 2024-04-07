@@ -62,6 +62,6 @@ npm run dev
 
 Assim que o projeto estiver rodando, acesse o seu `http://localhost:5173/`
 
-## 🙋‍♂️ Colaborador
+## 🙋‍♂️ Colaboradores
 
 Este projeto foi desenvolvido por mim Wilker Guimarães, através do evento NLW-Unite da Rockeseat na trilha de React. Com o objetivo de desenvolver e aplicar os meus conhecimentos de desenvolvimento front-end e utilizá-lo em conjunto com uma aplicação Back-end.
