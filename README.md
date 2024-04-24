@@ -2,25 +2,17 @@
 
 ![home_page](https://imgur.com/YBHMTPH.png)
 
-## Adicionando uma nova nota
-
-![create_note_dialog](https://imgur.com/5wpIA7g.png)
-
 ## Adicionando uma nova nota por texto
 
-![create_note_text](https://imgur.com/3LEc6Q5.png)
+https://github.com/WilkerGuimaraes/notes-list-frontend/assets/141461291/0bbff5aa-9772-4e3e-8521-f41873bb605c
 
 ## Gravando áudio para adicionar uma nova nota
 
-![create_note_recording](https://imgur.com/OJEQL24.png)
+https://github.com/WilkerGuimaraes/notes-list-frontend/assets/141461291/9ff37b26-f261-43e4-bf87-45b107d958af
 
-## Filtro de pesquisa
+## Filtrando e apagando notas
 
-![search_note](https://imgur.com/TX6W8oH.png)
-
-## Deletando uma nota
-
-![delete_note](https://imgur.com/c9kG7IB.png)
+https://github.com/WilkerGuimaraes/notes-list-frontend/assets/141461291/183127e3-a0aa-45db-ba28-d4ba342abf39
 
 # Lista de Notas
 
