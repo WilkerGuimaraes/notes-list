@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { NewNoteCard } from "./components/new-note-card";
 import { NoteCard } from "./components/note-card";
+import { toast } from "sonner";
 
 interface Note {
   id: string;
@@ -42,6 +43,8 @@ export const App = () => {
   const onNoteDeleted = async (id: string) => {
     try {
       await axios.delete(`http://localhost:3333/notes/${id}`);
+
+      toast.success("Nota apagada com sucesso!");
 
       await fetchNotes();
     } catch (error) {

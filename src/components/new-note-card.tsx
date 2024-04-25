@@ -29,7 +29,9 @@ export const NewNoteCard = ({ onNoteCreated }: NewNoteCardProps) => {
   const handleSaveNote = (event: FormEvent) => {
     event.preventDefault();
 
-    if (content === "") return;
+    if (content === "") {
+      return toast.error("A nota precisa ter uma descrição para ser criada.");
+    }
 
     onNoteCreated(content);
 
@@ -40,7 +42,9 @@ export const NewNoteCard = ({ onNoteCreated }: NewNoteCardProps) => {
   };
 
   const handleKeyboardShortcutEvent = (event: KeyboardEvent) => {
-    if (content === "") return;
+    if (content === "") {
+      return toast.error("A nota precisa ter uma descrição para ser criada.");
+    }
 
     if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) {
       onNoteCreated(content);
